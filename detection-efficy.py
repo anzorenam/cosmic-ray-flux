@@ -10,7 +10,8 @@ atot=2.0*np.pi*280.0**2.0
 ptype=3
 sb3=np.loadtxt('{0}_flux/{0}_fsb3.out'.format(pfiles[ptype]))
 name_out='{}-flux-deff.dat'.format(pfiles[ptype])
-Evt_sel=np.logical_and(np.mod(sb3[1,:],2)==1.0,sb3[6,:]==0.0)
+pats=np.array([1,3,5,7])
+Evt_sel=np.logical_and(np.isin(sb3[1,:],pats),sb3[6,:]==0.0)
 sb3=sb3[:,Evt_sel]
 Nevt=sb3[0,:]
 hpat=sb3[1,:]
